@@ -256,6 +256,23 @@
   .block li{margin-bottom:7px;}
   .block li::marker{color:var(--gold-dim);}
 
+  .video-embed{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    margin:22px 0;
+    overflow:hidden;
+  }
+  .video-embed iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+  }
+
   .notice{
     border:1px solid var(--vermillion-dim, #6a281f);
     background:rgba(173,58,43,0.06);
@@ -449,6 +466,7 @@
     <nav class="tabs" id="tabNav">
       <button data-target="top" class="active"><span class="dot"></span>TOP ― 街について</button>
       <button data-target="story"><span class="dot"></span>物語 ― 双つの月</button>
+      <button data-target="latest"><span class="dot"></span>街の物語(最新情報)</button>
       <button data-target="rules"><span class="dot"></span>サーバー規程</button>
       <button data-target="entry"><span class="dot"></span>参加・補填</button>
       <button data-target="civil"><span class="dot"></span>公務員</button>
@@ -593,6 +611,26 @@
         <p>それが本当に彼らなのか、確かめる術はない。だが、街が大きく揺らぐその瞬間――英雄たちはどこかで、静かに見守っているのかもしれない。</p>
         <p>月が割れた夜の真実は、今も闇の中だ。だが、双つの月が照らす街には、確かに“誰か”の気配がある。</p>
         <p style="color:var(--gold-bright);font-family:'Shippori Mincho',serif;font-size:16px;">それが、希望なのか、警告なのか。答えを知るのは、月だけだ。</p>
+      </section>
+    </section>
+
+    <!-- ============ LATEST STORY VIDEOS ============ -->
+    <section class="panel" id="panel-latest">
+      <div class="eyebrow"><span class="label">LATEST UPDATES</span><div class="logo-tag logo-mark" role="img" aria-label="Vulfayne City logo"></div></div>
+      <h2 class="panel-title">街の物語(最新情報)</h2>
+      <p class="panel-sub">Vulfayne City 公式YouTubeチャンネル ― <a href="https://youtube.com/@vulfayne-city" target="_blank" rel="noopener">youtube.com/@vulfayne-city</a></p>
+
+      <section class="block">
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/videoseries?list=UU6CFtOYFHp6Se2M92ml6Jbg"
+            title="Vulfayne City 公式YouTubeチャンネル ― 最新動画"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
       </section>
     </section>
 
@@ -1150,6 +1188,7 @@
   const tabDefs = [
     {id:'top', label:'TOP'},
     {id:'story', label:'物語'},
+    {id:'latest', label:'最新情報'},
     {id:'rules', label:'規程'},
     {id:'entry', label:'参加・補填'},
     {id:'civil', label:'公務員'},
