@@ -771,6 +771,7 @@
       <h2 class="panel-title">参加・補填について</h2>
       <p class="panel-sub">新規参加者の招待について ／ 補填対応について</p>
 
+      <div id="entry-static">
       <section class="block">
         <h3><span class="num">A</span>新規参加者の招待について</h3>
         <p>招待制である為、参加者からの招待状がなければDiscordサーバーへ入ることが出来ません。</p>
@@ -803,6 +804,9 @@
         </ul>
         <p style="color:var(--vermillion-bright)">提出が困難な場合は、補填対応は出来ません。</p>
       </section>
+      </div>
+      <div id="entry-dynamic" style="display:none;"></div>
+      <p id="entry-updated-note" style="display:none;font-size:11.5px;color:var(--muted-2);margin-top:8px;"></p>
     </section>
 
     <!-- ============ CIVIL SERVANT ============ -->
@@ -810,6 +814,8 @@
       <div class="eyebrow"><span class="label">CIVIL SERVANT ・ 白ジョブ</span><div class="logo-tag logo-mark" role="img" aria-label="Vulfayne City logo"></div></div>
       <h2 class="panel-title">公務員</h2>
       <p class="panel-sub">Civil Servant ― PD ／ EMS ／ 白メカニック ／ ディーラー</p>
+
+      <div id="civil-static">
 
       <details class="acc accent-blue" open>
         <summary><span><span class="tag">OVERVIEW</span>公務員 概要</span><span class="chev">▶</span></summary>
@@ -946,6 +952,9 @@
           <span class="badge-soon">COMING SOON…</span>
         </div>
       </details>
+      </div>
+      <div id="civil-dynamic" style="display:none;"></div>
+      <p id="civil-updated-note" style="display:none;font-size:11.5px;color:var(--muted-2);margin-top:8px;"></p>
     </section>
 
     <!-- ============ CIVILIAN / CRIME ============ -->
@@ -953,6 +962,8 @@
       <div class="eyebrow"><span class="label">CIVILIAN JOBS & CRIME</span><div class="logo-tag logo-mark" role="img" aria-label="Vulfayne City logo"></div></div>
       <h2 class="panel-title">民間・犯罪</h2>
       <p class="panel-sub">有人JOB ／ 犯罪者 ／ ギャング ／ 犯罪ルール</p>
+
+      <div id="crime-static">
 
       <details class="acc accent-gold" open>
         <summary><span><span class="tag">CIVILIAN</span>有人JOB 概要</span><span class="chev">▶</span></summary>
@@ -1044,7 +1055,7 @@
           <table>
             <tr><th>最低人数</th><td>3名</td></tr>
             <tr><th>最大人数</th><td>8名（最高人数は街の参加人数によって増減有／警察の人数によっても変動）</td></tr>
-            <tr><th>設立費用</th><td>3億（認定後即日納）</td></tr>
+            <tr><th>設立費用</th><td>6億（認定後即日納）</td></tr>
             <tr><th>アジト</th><td>MLO 2億 ／ ハウジング 1億（各1つまで、設立時にどちらか購入）</td></tr>
             <tr><th>ボス専用装甲車（1台のみ）</th><td>3億</td></tr>
             <tr><th>装甲車（2台まで）</th><td>1台目 5000万 ／ 2台目 2億</td></tr>
@@ -1179,6 +1190,9 @@
           </ul>
         </div>
       </details>
+      </div>
+      <div id="crime-dynamic" style="display:none;"></div>
+      <p id="crime-updated-note" style="display:none;font-size:11.5px;color:var(--muted-2);margin-top:8px;"></p>
 
       <footer class="site-foot">
         Vulfayne City ― Invitation-only Roleplay City ／ 本ページはVAY city運営資料をもとに構成されています。内容は街の発展に応じて更新される場合があります。
@@ -1229,51 +1243,109 @@
   });
 
   /* =========================================================
-     サーバー規程 自動反映（Googleドキュメント連携）
+     Googleドキュメント連携（サーバー規程／参加・補填）
      ---------------------------------------------------------
      下の GAS_WEB_APP_URL に、GASで発行したWebアプリのURLを
-     貼り付けると、規程タブの内容がGoogleドキュメントの中身に
+     貼り付けると、対象タブの内容がGoogleドキュメントの中身に
      応じて自動で書き換わるようになります。
      URLが未設定、または取得に失敗した場合は、このHTMLに直接
      書かれている内容（固定版）がそのまま表示されるので、
      サイトが壊れることはありません。
   ========================================================= */
-  const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwo_T3pevcIekVyZy7C_PWnu7S1DmnYuBvX5UrQ6tjs-Z6exIi2aOO_ZMq85ugJatfg/exec";
+  const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxErpRHQAg7uXCAtoM1lbYE_RR9WK58OmSbnwPLH3NJ7UEqanZML9Sf3jy9f9mAI5g-/exec";
 
-  async function loadRulesFromDoc(){
+  // key: GASレスポンス内のキー名, static/dynamic: 対応するコンテナのid接頭辞, mode: 表示形式
+  const DOC_SYNC_TARGETS = [
+    { key: 'rules', prefix: 'rules', mode: 'flat' },
+    { key: 'entry', prefix: 'entry', mode: 'flat' },
+    { key: 'civil', prefix: 'civil', mode: 'accordion' },
+    { key: 'crime', prefix: 'crime', mode: 'accordion' }
+  ];
+
+  async function loadDocSync(){
     if(!GAS_WEB_APP_URL || GAS_WEB_APP_URL.indexOf('PASTE_YOUR') !== -1) return;
     try{
       const res = await fetch(GAS_WEB_APP_URL, {cache:'no-store'});
       if(!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
       if(data.error) throw new Error(data.message || 'unknown error');
-      if(!data.sections || !data.sections.length) throw new Error('sections empty');
 
-      renderRules(data);
+      DOC_SYNC_TARGETS.forEach(function(target){
+        const payload = data[target.key];
+        const hasContent = payload && (
+          (target.mode === 'flat' && payload.sections && payload.sections.length) ||
+          (target.mode === 'accordion' && payload.groups && payload.groups.length)
+        );
+        if(!hasContent) return;
 
-      document.getElementById('rules-static').style.display = 'none';
-      document.getElementById('rules-dynamic').style.display = 'block';
+        if(target.mode === 'flat'){
+          renderDocSections(payload.sections, target.prefix + '-dynamic');
+        } else {
+          renderDocGroups(payload.groups, target.prefix + '-dynamic');
+        }
 
-      const note = document.getElementById('rules-updated-note');
-      if(data.updatedAt){
-        const d = new Date(data.updatedAt);
-        note.textContent = '最終更新: ' + d.toLocaleString('ja-JP');
-        note.style.display = 'block';
-      }
+        document.getElementById(target.prefix + '-static').style.display = 'none';
+        document.getElementById(target.prefix + '-dynamic').style.display = 'block';
+
+        const note = document.getElementById(target.prefix + '-updated-note');
+        if(note && data.updatedAt){
+          const d = new Date(data.updatedAt);
+          note.textContent = '最終更新: ' + d.toLocaleString('ja-JP');
+          note.style.display = 'block';
+        }
+      });
     }catch(err){
-      console.warn('規程の自動取得に失敗したため、固定内容を表示します:', err);
+      console.warn('ドキュメントの自動取得に失敗したため、固定内容を表示します:', err);
     }
   }
 
-  function renderRules(data){
-    const root = document.getElementById('rules-dynamic');
+  function renderDocSections(sections, containerId){
+    const root = document.getElementById(containerId);
     root.innerHTML = '';
-    data.sections.forEach((sec, idx)=>{
-      root.appendChild(buildRuleBlock(sec, idx+1));
+    sections.forEach((sec, idx)=>{
+      root.appendChild(buildDocBlock(sec, idx+1));
     });
   }
 
-  function buildRuleBlock(sec, num){
+  function renderDocGroups(groups, containerId){
+    const root = document.getElementById(containerId);
+    root.innerHTML = '';
+    groups.forEach((group, idx)=>{
+      root.appendChild(buildDocAccordion(group, idx===0));
+    });
+  }
+
+  function buildDocAccordion(group, openByDefault){
+    const details = document.createElement('details');
+    details.className = 'acc accent-gold';
+    if(openByDefault) details.open = true;
+
+    const summary = document.createElement('summary');
+    const span = document.createElement('span');
+    span.appendChild(document.createTextNode(normalizeDocText(group.title)));
+    const chev = document.createElement('span');
+    chev.className = 'chev';
+    chev.textContent = '▶';
+    summary.appendChild(span);
+    summary.appendChild(chev);
+    details.appendChild(summary);
+
+    const body = document.createElement('div');
+    body.className = 'acc-body';
+    (group.sections || []).forEach(sec=>{
+      if(sec.title){
+        const h4 = document.createElement('h4');
+        h4.textContent = normalizeDocText(sec.title);
+        body.appendChild(h4);
+      }
+      (sec.content || []).forEach(item=> body.appendChild(buildDocNode(item)));
+    });
+    details.appendChild(body);
+
+    return details;
+  }
+
+  function buildDocBlock(sec, num){
     const block = document.createElement('section');
     block.className = 'block';
     const h3 = document.createElement('h3');
@@ -1283,7 +1355,7 @@
     h3.appendChild(numSpan);
     h3.appendChild(document.createTextNode(normalizeDocText(sec.title)));
     block.appendChild(h3);
-    (sec.content || []).forEach(item=> block.appendChild(buildRuleNode(item)));
+    (sec.content || []).forEach(item=> block.appendChild(buildDocNode(item)));
     return block;
   }
 
@@ -1291,7 +1363,7 @@
     return (text || '').replace(/\r\n?/g, ' ').replace(/\s+/g, ' ').trim();
   }
 
-  function buildRuleNode(item){
+  function buildDocNode(item){
     if(item.type === 'paragraph'){
       const p = document.createElement('p');
       p.textContent = normalizeDocText(item.text);
@@ -1324,13 +1396,14 @@
       const h4 = document.createElement('h4');
       h4.textContent = normalizeDocText(item.subtitle);
       wrap.appendChild(h4);
-      (item.content || []).forEach(sub=> wrap.appendChild(buildRuleNode(sub)));
+      (item.content || []).forEach(sub=> wrap.appendChild(buildDocNode(sub)));
       return wrap;
     }
     return document.createDocumentFragment();
   }
 
-  loadRulesFromDoc();
+  loadDocSync();
 </script>
 </body>
 </html>
+
