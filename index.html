@@ -468,9 +468,11 @@
       <button data-target="story"><span class="dot"></span>物語 ― 双つの月</button>
       <button data-target="latest"><span class="dot"></span>街の物語(最新情報)</button>
       <button data-target="rules"><span class="dot"></span>サーバー規程</button>
-      <button data-target="entry"><span class="dot"></span>参加・補填</button>
+      <button data-target="entry"><span class="dot"></span>参加について</button>
+      <button data-target="compensation"><span class="dot"></span>補填について</button>
       <button data-target="civil"><span class="dot"></span>公務員</button>
-      <button data-target="crime"><span class="dot"></span>民間・犯罪</button>
+      <button data-target="civilian"><span class="dot"></span>民間</button>
+      <button data-target="crime"><span class="dot"></span>犯罪</button>
     </nav>
     <div class="sidebar-foot">
       <p>VAY city / Vulfayne City<br>Roleplay Server Codex</p>
@@ -765,15 +767,14 @@
       <p id="rules-updated-note" style="display:none;font-size:11.5px;color:var(--muted-2);margin-top:8px;"></p>
     </section>
 
-    <!-- ============ ENTRY / COMPENSATION ============ -->
+    <!-- ============ ENTRY ============ -->
     <section class="panel" id="panel-entry">
-      <div class="eyebrow"><span class="label">ENTRY & SUPPORT</span><div class="logo-tag logo-mark" role="img" aria-label="Vulfayne City logo"></div></div>
-      <h2 class="panel-title">参加・補填について</h2>
-      <p class="panel-sub">新規参加者の招待について ／ 補填対応について</p>
+      <div class="eyebrow"><span class="label">ENTRY</span><div class="logo-tag logo-mark" role="img" aria-label="Vulfayne City logo"></div></div>
+      <h2 class="panel-title">新規参加者の招待について</h2>
+      <p class="panel-sub">招待制サーバーへの参加フロー</p>
 
       <div id="entry-static">
       <section class="block">
-        <h3><span class="num">A</span>新規参加者の招待について</h3>
         <p>招待制である為、参加者からの招待状がなければDiscordサーバーへ入ることが出来ません。</p>
         <h4>参加手順</h4>
         <div class="flow">
@@ -792,9 +793,19 @@
           <li>新規参加者が参加して初心者案内まで終了後、再度チケットの発行をお願いします。</li>
         </ul>
       </section>
+      </div>
+      <div id="entry-dynamic" style="display:none;"></div>
+      <p id="entry-updated-note" style="display:none;font-size:11.5px;color:var(--muted-2);margin-top:8px;"></p>
+    </section>
 
+    <!-- ============ COMPENSATION ============ -->
+    <section class="panel" id="panel-compensation">
+      <div class="eyebrow"><span class="label">SUPPORT</span><div class="logo-tag logo-mark" role="img" aria-label="Vulfayne City logo"></div></div>
+      <h2 class="panel-title">補填対応について</h2>
+      <p class="panel-sub">歪み・トラブル発生時の補填ルール</p>
+
+      <div id="compensation-static">
       <section class="block">
-        <h3><span class="num">B</span>補填対応について</h3>
         <p>歪みでの補填対応は可能ですが、必ずクリップを提出してください（音声等を編集・削除したものは不可）。</p>
         <p>アナウンスやバグ報告で通知されていない歪みやトラブルのみが対応になります。必ずアナウンスやバグ報告を確認しておくようにご協力をお願いします。手に入るものがランダムであった場合は、最低ラインの補填になりますのでご理解ください。</p>
         <p>ボディカメラを付けておくことをおすすめします。歪みによるものかの判断が出来ない場合、補填対応をお断りする場合もありますのでご了承ください。</p>
@@ -805,8 +816,8 @@
         <p style="color:var(--vermillion-bright)">提出が困難な場合は、補填対応は出来ません。</p>
       </section>
       </div>
-      <div id="entry-dynamic" style="display:none;"></div>
-      <p id="entry-updated-note" style="display:none;font-size:11.5px;color:var(--muted-2);margin-top:8px;"></p>
+      <div id="compensation-dynamic" style="display:none;"></div>
+      <p id="compensation-updated-note" style="display:none;font-size:11.5px;color:var(--muted-2);margin-top:8px;"></p>
     </section>
 
     <!-- ============ CIVIL SERVANT ============ -->
@@ -957,13 +968,13 @@
       <p id="civil-updated-note" style="display:none;font-size:11.5px;color:var(--muted-2);margin-top:8px;"></p>
     </section>
 
-    <!-- ============ CIVILIAN / CRIME ============ -->
-    <section class="panel" id="panel-crime">
-      <div class="eyebrow"><span class="label">CIVILIAN JOBS & CRIME</span><div class="logo-tag logo-mark" role="img" aria-label="Vulfayne City logo"></div></div>
-      <h2 class="panel-title">民間・犯罪</h2>
-      <p class="panel-sub">有人JOB ／ 犯罪者 ／ ギャング ／ 犯罪ルール</p>
+    <!-- ============ CIVILIAN JOBS ============ -->
+    <section class="panel" id="panel-civilian">
+      <div class="eyebrow"><span class="label">CIVILIAN JOBS</span><div class="logo-tag logo-mark" role="img" aria-label="Vulfayne City logo"></div></div>
+      <h2 class="panel-title">民間</h2>
+      <p class="panel-sub">有人JOB ／ 飲食店 ／ ディーラー</p>
 
-      <div id="crime-static">
+      <div id="civilian-static">
 
       <details class="acc accent-gold" open>
         <summary><span><span class="tag">CIVILIAN</span>有人JOB 概要</span><span class="chev">▶</span></summary>
@@ -1016,7 +1027,18 @@
         <div class="acc-body"><span class="badge-soon">COMING SOON…</span></div>
       </details>
 
-      <div class="divider-moon"><div class="line"></div><div class="logo-mark" role="img" aria-label="Vulfayne City logo"></div><div class="line"></div></div>
+      </div>
+      <div id="civilian-dynamic" style="display:none;"></div>
+      <p id="civilian-updated-note" style="display:none;font-size:11.5px;color:var(--muted-2);margin-top:8px;"></p>
+    </section>
+
+    <!-- ============ CRIME ============ -->
+    <section class="panel" id="panel-crime">
+      <div class="eyebrow"><span class="label">CRIME</span><div class="logo-tag logo-mark" role="img" aria-label="Vulfayne City logo"></div></div>
+      <h2 class="panel-title">犯罪</h2>
+      <p class="panel-sub">犯罪者 ／ 闇医者 ／ 闇メカニック ／ ギャング ／ 犯罪ルール</p>
+
+      <div id="crime-static">
 
       <details class="acc accent-vermillion" open>
         <summary><span><span class="tag">CRIMINAL</span>犯罪者 概要</span><span class="chev">▶</span></summary>
@@ -1208,9 +1230,11 @@
     {id:'story', label:'物語'},
     {id:'latest', label:'最新情報'},
     {id:'rules', label:'規程'},
-    {id:'entry', label:'参加・補填'},
+    {id:'entry', label:'参加'},
+    {id:'compensation', label:'補填'},
     {id:'civil', label:'公務員'},
-    {id:'crime', label:'民間・犯罪'}
+    {id:'civilian', label:'民間'},
+    {id:'crime', label:'犯罪'}
   ];
 
   const sideButtons = document.querySelectorAll('#tabNav button');
@@ -1252,13 +1276,15 @@
      書かれている内容（固定版）がそのまま表示されるので、
      サイトが壊れることはありません。
   ========================================================= */
-  const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwo_T3pevcIekVyZy7C_PWnu7S1DmnYuBvX5UrQ6tjs-Z6exIi2aOO_ZMq85ugJatfg/exec";
+  const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxqcM6DvCYIsyhpO0XlZBicpiYaM949HSgJExo-25_0Nhai9sroCFjXlLJqzblAlEtx/exec";
 
   // key: GASレスポンス内のキー名, static/dynamic: 対応するコンテナのid接頭辞, mode: 表示形式
   const DOC_SYNC_TARGETS = [
     { key: 'rules', prefix: 'rules', mode: 'flat' },
     { key: 'entry', prefix: 'entry', mode: 'flat' },
+    { key: 'compensation', prefix: 'compensation', mode: 'flat' },
     { key: 'civil', prefix: 'civil', mode: 'accordion' },
+    { key: 'civilian', prefix: 'civilian', mode: 'accordion' },
     { key: 'crime', prefix: 'crime', mode: 'accordion' }
   ];
 
@@ -1406,4 +1432,3 @@
 </script>
 </body>
 </html>
-
