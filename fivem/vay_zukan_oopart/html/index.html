@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>オーパーツ図鑑</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="book" class="hidden">
+		<button id="close-button" title="閉じる">×</button>
+
+		<div id="category-name"></div>
+
+		<div id="header">
+			<button id="prev-button">◀</button>
+			<div id="header-text">
+				<div id="sheet-title"></div>
+				<div id="sheet-status"></div>
+			</div>
+			<button id="next-button">▶</button>
+		</div>
+
+		<div id="grid"></div>
+	</div>
+
+	<div id="modal" class="hidden">
+		<div id="modal-card">
+			<button id="modal-close" title="閉じる">×</button>
+			<div id="modal-image"></div>
+			<div id="modal-name"></div>
+			<div id="modal-desc"></div>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>

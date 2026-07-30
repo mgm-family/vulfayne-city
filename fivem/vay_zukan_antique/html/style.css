@@ -1,0 +1,220 @@
+:root {
+	--ink: #0a0908;
+	--panel: #141109;
+	--panel-2: #1c1810;
+	--line: #3a2f1e;
+	--paper: #eae2cd;
+	--paper-dim: #b7ad92;
+	--muted: #6b6350;
+	/* overridden at runtime from Lua (ThemeColor / ThemeColorBright) */
+	--accent: #c9a227;
+	--accent-bright: #e6c352;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	width: 100vw;
+	height: 100vh;
+	background: transparent;
+	font-family: 'Noto Sans JP', 'Yu Gothic', sans-serif;
+	color: var(--paper);
+	overflow: hidden;
+}
+
+.hidden {
+	display: none !important;
+}
+
+/* ---------------- book ---------------- */
+
+#book {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 680px;
+	height: 620px;
+	background: var(--ink);
+	border: 2px solid var(--accent);
+	border-radius: 14px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+#close-button, #modal-close {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	width: 32px;
+	height: 32px;
+	border: none;
+	border-radius: 6px;
+	background: var(--panel-2);
+	color: var(--paper);
+	font-size: 20px;
+	cursor: pointer;
+}
+#close-button:hover, #modal-close:hover, #prev-button:hover, #next-button:hover {
+	background: var(--accent);
+	color: var(--ink);
+}
+
+#category-name {
+	font-size: 13px;
+	letter-spacing: 0.28em;
+	color: var(--accent-bright);
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+#header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+#prev-button, #next-button {
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 6px;
+	background: var(--panel-2);
+	color: var(--paper);
+	font-size: 20px;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+#header-text {
+	flex: 1;
+	text-align: center;
+}
+
+#sheet-title {
+	font-size: 21px;
+	font-weight: 700;
+}
+
+#sheet-status {
+	font-size: 14px;
+	color: var(--accent-bright);
+	margin-top: 4px;
+}
+
+#grid {
+	flex: 1;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	gap: 14px;
+}
+
+.slot {
+	position: relative;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	cursor: pointer;
+	overflow: hidden;
+	border: 1px solid var(--line);
+	background: var(--panel-2);
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.slot:hover {
+	border-color: var(--accent-bright);
+}
+
+/* locked (not yet registered): dim silhouette + "?" */
+.slot.locked {
+	background:
+		radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.05), transparent 60%),
+		var(--panel-2);
+}
+
+.slot.locked .slot-mark {
+	font-size: 42px;
+	font-weight: 700;
+	color: rgba(255, 255, 255, 0.14);
+	text-shadow: 0 0 12px var(--accent);
+}
+
+.slot.locked .slot-label {
+	color: var(--muted);
+}
+
+/* unlocked (registered): full color + theme glow */
+.slot.unlocked {
+	background: var(--panel);
+	border-color: var(--accent);
+	box-shadow: 0 0 16px -4px var(--accent);
+}
+
+.slot.unlocked .slot-image {
+	width: 100%;
+	flex: 1;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.slot-label {
+	margin-top: 8px;
+	font-size: 12.5px;
+	text-align: center;
+	color: var(--paper);
+}
+
+/* ---------------- modal ---------------- */
+
+#modal {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.55);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#modal-card {
+	position: relative;
+	width: 380px;
+	background: var(--ink);
+	border: 2px solid var(--accent);
+	border-radius: 14px;
+	padding: 24px;
+	box-shadow: 0 0 40px -6px var(--accent);
+}
+
+#modal-image {
+	width: 100%;
+	height: 240px;
+	background-color: var(--panel-2);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 8px;
+}
+
+#modal-name {
+	margin-top: 16px;
+	font-size: 22px;
+	font-weight: 700;
+}
+
+#modal-desc {
+	margin-top: 10px;
+	font-size: 15px;
+	line-height: 1.7;
+	color: var(--paper-dim);
+}
