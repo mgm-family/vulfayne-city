@@ -37,4 +37,5 @@ dependencies {
 	'ox_target',
 	'ox_lib',
 	'oxmysql',
+	'ox_inventory',
 }

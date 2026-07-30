@@ -12,6 +12,7 @@ local CATEGORY_COLOR = {
 	Antique = { 190, 140, 80 }, -- aged brass/antique brown
 }
 local MARKER_DRAW_DISTANCE = 25.0
+local ZUKAN_ITEM = 'vay_zukan' -- ox_inventory item name; register it in ox_inventory's data/items.lua (see README)
 
 local State = {}     -- [categoryId] = { Owned = {[itemId]=true}, Claimed = {[sheetIndex]=true} }
 local ItemsById = {} -- [categoryId][itemId] = item
@@ -29,6 +30,10 @@ for categoryId, catData in pairs(VulfayneCollectibles.Categories) do
 	end
 	ItemsById[categoryId] = lookup
 end
+
+-- Resource-start NUI focus reset (rule: never let this resource leave the
+-- player stuck in a focused/unclickable state after a restart).
+SetNuiFocus(false, false)
 
 --------------------------------------------------------------------------
 -- NUI payload (built once: item Coords aren't needed client-UI-side and
@@ -190,8 +195,35 @@ local function toggleUI()
 	end
 end
 
+-- Own-inventory count check via ox_inventory's modern client export.
+local function hasZukanItem()
+	local ok, count = pcall(function()
+		return exports.ox_inventory:Search('count', ZUKAN_ITEM)
+	end)
+	return ok and count ~= nil and count > 0
+end
+
+-- Called by ox_inventory when a player uses the "vay_zukan" item (see the
+-- client.export = 'vulfayne-collections.useZukan' entry documented in
+-- README.md). This is the primary way the album should open.
+exports('useZukan', function(_data, _slot)
+	if not initialized then
+		lib.notify({ description = '図鑑を読み込み中です。少し待ってから試してください。', type = 'error' })
+		return
+	end
+	toggleUI()
+end)
+
+-- Keybind kept for convenience, gated behind actually owning the item so
+-- the album stays "visible" only once you have it, matching the item-use
+-- flow above. Delete this RegisterCommand/RegisterKeyMapping pair if you
+-- want item-use to be the only way in.
 RegisterCommand('vulfayne_zukan', function()
 	if not initialized then
+		return
+	end
+	if not hasZukanItem() then
+		lib.notify({ description = '「収集図鑑」を持っていないと開けません。', type = 'error' })
 		return
 	end
 	toggleUI()
@@ -244,6 +276,10 @@ local function init()
 	if initialized then
 		return
 	end
+
+	-- Guard against a stuck-open NUI focus from a previous session/restart.
+	uiOpen = false
+	SetNuiFocus(false, false)
 
 	local ok, snapshot = pcall(function()
 		return lib.callback.await('vulfayne_collect:getSync', false)

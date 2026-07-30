@@ -10,6 +10,7 @@
 - `ox_target`
 - `ox_lib`（`ox_target`の依存でもあるので通常は既に入っています）
 - `oxmysql`
+- `ox_inventory`（図鑑アイテムの使用トリガーに使用）
 
 `server.cfg` で、これらより後に `ensure vulfayne-collections` してください。
 
@@ -17,10 +18,32 @@
 
 1. このフォルダ（`vulfayne-collections`）を丸ごと `resources/[任意のカテゴリ]/` にコピー
 2. `sql/install.sql` をデータベースに一度だけ流す
-3. `server.cfg` に `ensure vulfayne-collections` を追加（`qb-core` / `ox_target` / `oxmysql` より後）
-4. サーバーを起動
+3. `ox_inventory` の `data/items.lua` に、下記「図鑑アイテムで開く」の項目を追加
+4. `server.cfg` に `ensure vulfayne-collections` を追加（`qb-core` / `ox_target` / `ox_inventory` / `oxmysql` より後）
+5. サーバーを起動
 
 これだけで一応動作します（target・NPCの位置は暫定の自動配置、画像は未設定の状態）。実運用前に下記の「隠し場所の設定」と「画像の用意」をしてください。
+
+## 図鑑アイテムで開く
+
+図鑑UIは `vay_zukan` という ox_inventory アイテムを**使用（use）することで開きます**。`vay_ammo_compat.useAmmo` と同じ、ox_inventory のモダンな `client.export` 方式です。`ox_inventory` の `data/items.lua` に以下を追加してください。
+
+```lua
+['vay_zukan'] = {
+	label = '収集図鑑',
+	weight = 200,
+	stack = false,
+	close = true,
+	description = 'シール・オーパーツ・骨董品の収集状況を記録できる図鑑。',
+	client = {
+		export = 'vulfayne-collections.useZukan',
+	},
+},
+```
+
+- 使用してもアイテムは消費されません（本や手帳のような扱いです。何度でも使えます）。
+- テスト用にアイテムを自分に渡すには、管理者権限で `/additem [自分のID] vay_zukan 1` などお使いのアドミンコマンドで付与してください。
+- `client/main.lua` には保険として `F6`（`/vulfayne_zukan`）キーバインドも残していますが、こちらも `vay_zukan` を所持していないと開けないようにしてあります（＝図鑑は常にアイテム所持が前提）。キーバインド自体が不要であれば、`client/main.lua` の `RegisterCommand('vulfayne_zukan', ...)` と `RegisterKeyMapping(...)` の2行を削除してください。
 
 ## 隠し場所（target・NPC）の設定
 
@@ -53,7 +76,7 @@ Npc = { Coords = vector4(410.3, -975.8, 30.7, 160.0), Model = 'a_m_y_business_01
 - **収集**: `client/main.lua` が、まだ持っていないアイテムだけ `ox_target` のスフィアゾーンを登録します（`拾う`）。選択すると `server/main.lua` が距離チェックの上で所持データに追加します。
 - **1人1回・2回目は見えなくなる**: 所持データは `citizenid` に紐づけて `oxmysql` に保存されます（`vulfayne_collectibles` テーブル）。クライアントは自分が既に持っているアイテムのターゲットゾーンをそもそも登録しないので、他のプレイヤーからは（まだ持っていなければ）引き続き見えますが、自分からは見えません。再ログイン後もサーバーからデータを取得してから登録するので、すぐに反映されます。
 - **NPCでの景品受け取り**: 1シート（9個）を集め終えると、対応するNPC（カテゴリごとに1体）に `ox_target` で話しかけることで景品を受け取れます。デフォルトの報酬は `QBCore` の銀行口座への入金です（`Player.Functions.AddMoney('bank', amount, ...)`）。
-- **UI**: `F6`キー（`/vulfayne_zukan` コマンド）で図鑑を開閉します。カテゴリタブ→シートをめくる→3×3のマス目から集めたアイテムを確認でき、マスをクリックすると画像と説明文が拡大表示されます（未取得のものは「？？？」）。
+- **UI**: `vay_zukan` アイテムを使用すると図鑑が開きます（保険の `F6` も同じくアイテム所持が条件）。カテゴリタブ→シートをめくる→3×3のマス目から集めたアイテムを確認でき、マスをクリックすると画像と説明文が拡大表示されます（未取得のものは「？？？」）。
 
 ## 報酬のカスタマイズ
 
