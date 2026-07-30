@@ -1,0 +1,9 @@
+{
+  "blocks": [
+    {
+      "num": null,
+      "title": null,
+      "html": "        <p>招待制である為、参加者からの招待状がなければDiscordサーバーへ入ることが出来ません。</p>\n        <h4>参加手順</h4>\n        <div class=\"flow\">\n          <div class=\"flow-step\"><span class=\"idx\">1</span><p>既存参加者（以後：招待者）から運営にチケットを発行</p></div>\n          <div class=\"flow-divider\"></div>\n          <div class=\"flow-step\"><span class=\"idx\">2</span><p>招待者からテンプレートに沿った内容を送信していただき、運営内で内容を確認</p></div>\n          <div class=\"flow-divider\"></div>\n          <div class=\"flow-step\"><span class=\"idx\">3</span><p>確認が取れ次第、運営より招待コードを新規参加者あるいは招待者へ送信</p></div>\n          <div class=\"flow-divider\"></div>\n          <div class=\"flow-step\"><span class=\"idx\">4</span><p>街への参加が可能に。初心者案内は招待者が行ってください</p></div>\n        </div>\n        <ul>\n          <li>招待コードを使用すれば参加はできますが、運営の許可を得ずに他者へ送付することは禁止します。</li>\n          <li>新規参加者が参加して3か月以内にBANに値するルール違反等をした場合、招待者にもペナルティが発生します（期間を設けた街への参加禁止、または内容によっては永久追放）。招待をする場合はご理解の上でお願いします。</li>\n          <li>その代わり、招待者へは街から招待した人数によって特典をお渡しします（最大5名まで）。</li>\n          <li>新規参加者が参加して初心者案内まで終了後、再度チケットの発行をお願いします。</li>\n        </ul>\n      "
+    }
+  ]
+}
