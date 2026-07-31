@@ -59,6 +59,8 @@
 
 `vay_zukan_antique`（図鑑本体）は使用してもアイテムは消費されません。`vay_antique_piece`（未鑑定品）はNPCへの納品時にサーバー側で自動的に削除されます。テスト用に図鑑アイテムを渡すには `/additem [自分のID] vay_zukan_antique 1` など。`F8`（`/vay_zukan_antique`コマンド）も保険で残していますが、こちらも `vay_zukan_antique` 所持が条件です。不要なら `client/main.lua` の `RegisterCommand('vay_zukan_antique', ...)` と `RegisterKeyMapping(...)` を削除してください。
 
+`vay_zukan_antique` のインベントリ表示画像は `ox_inventory_item_image/vay_zukan_antique.png` に用意済みです。`ox_inventory/web/images/items/vay_zukan_antique.png` としてコピーすれば、ファイル名がアイテムキーと一致しているので自動的に使われます（`data/items.lua` に `image = ...` の追記は不要）。`vay_antique_piece`（未鑑定品）用の画像は別途用意していないので、必要であれば同じ場所に追加してください。
+
 ## UIカラー
 
 骨董品図鑑のテーマカラーは**金**（`#c9a227` / 明るい金 `#e6c352`、Vulfayne City公式サイトの `--gold` トークンと同じ）です。`shared/data.lua` の `Zukan.ThemeColor` / `Zukan.ThemeColorBright` で変更できます。シートの各マスは、未登録だと薄いシルエット＋「？」、登録済みになると画像＋テーマカラーの縁取りで表示されます。

@@ -45,6 +45,8 @@
 
 使用してもアイテムは消費されません。テスト用付与は `/additem [自分のID] vay_zukan_seal 1` など。`F6`（`/vay_zukan_seal`コマンド）も保険で残していますが、こちらもアイテム所持が条件です。不要なら `client/main.lua` の `RegisterCommand('vay_zukan_seal', ...)` と `RegisterKeyMapping(...)` を削除してください。
 
+このアイテムのインベントリ表示画像は `ox_inventory_item_image/vay_zukan_seal.png` に用意済みです。`ox_inventory/web/images/items/vay_zukan_seal.png` としてコピーすれば、ファイル名がアイテムキーと一致しているので自動的に使われます（`data/items.lua` に `image = ...` の追記は不要）。
+
 ## UIカラー
 
 シール図鑑のテーマカラーは**青**（`#4b6a8a` / 明るい青 `#6f93b6`、Vulfayne City公式サイトの `--blue` トークンと同じ）です。`shared/data.lua` の `Zukan.ThemeColor` / `Zukan.ThemeColorBright` で変更できます。シートの各マスは、未登録だと薄いシルエット＋「？」、登録済みになると画像＋テーマカラーの縁取りで表示されます。

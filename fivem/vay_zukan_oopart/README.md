@@ -59,6 +59,8 @@
 
 `vay_zukan_oopart`（図鑑本体）は使用してもアイテムは消費されません。`vay_oopart_relic`（未鑑定品）はNPCへの納品時にサーバー側で自動的に削除されます。テスト用に図鑑アイテムを渡すには `/additem [自分のID] vay_zukan_oopart 1` など。`F7`（`/vay_zukan_oopart`コマンド）も保険で残していますが、こちらも `vay_zukan_oopart` 所持が条件です。不要なら `client/main.lua` の `RegisterCommand('vay_zukan_oopart', ...)` と `RegisterKeyMapping(...)` を削除してください。
 
+`vay_zukan_oopart` のインベントリ表示画像は `ox_inventory_item_image/vay_zukan_oopart.png` に用意済みです。`ox_inventory/web/images/items/vay_zukan_oopart.png` としてコピーすれば、ファイル名がアイテムキーと一致しているので自動的に使われます（`data/items.lua` に `image = ...` の追記は不要）。`vay_oopart_relic`（未鑑定品）用の画像は別途用意していないので、必要であれば同じ場所に追加してください。
+
 ## UIカラー
 
 オーパーツ図鑑のテーマカラーは**赤**（`#ad3a2b` / 明るい赤 `#d5543f`、Vulfayne City公式サイトの `--vermillion` トークンと同じ）です。`shared/data.lua` の `Zukan.ThemeColor` / `Zukan.ThemeColorBright` で変更できます。シートの各マスは、未登録だと薄いシルエット＋「？」、登録済みになると画像＋テーマカラーの縁取りで表示されます。
