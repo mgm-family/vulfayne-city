@@ -71,6 +71,8 @@
 
 `html/images/<アイテムID>.png`（例: `Oopart_S1_I3.png`）に画像を置くと図鑑に反映されます。未設置でも動作します。
 
+**90枚とも、テーマカラーのバッジにアイテム名を載せただけの自動生成プレースホルダー画像が最初から入っています。** 本物のイラストに差し替えたい場合は、`IMAGE_PROMPTS.md` に90件ぶんの画像生成プロンプト（ChatGPT/DALL-E・Bing Image Creator・Midjourneyなどにそのまま貼り付け可能）をまとめてあるので、生成した画像を同じファイル名で上書きしてください。
+
 ## 報酬のカスタマイズ
 
 `server/main.lua` の `vay_zukan_oopart:talk` イベント内、`if reward.Kind == 'Money' then ... end` の部分に分岐を追加してください。
