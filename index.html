@@ -211,9 +211,11 @@
     padding:56px 64px 120px;
     max-width:920px;
   }
-  .panel{display:none;animation:fadein .5s ease;}
-  .panel.active{display:block;}
-  @keyframes fadein{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+  .panel{display:none;}
+  .panel.active{display:block;animation:panelEnter .5s cubic-bezier(.19,1,.32,1);}
+  .panel.leaving{display:block;animation:panelLeave .22s ease forwards;}
+  @keyframes panelEnter{from{opacity:0;transform:translateY(16px) scale(.985);filter:blur(2px);}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}}
+  @keyframes panelLeave{from{opacity:1;transform:translateY(0) scale(1);}to{opacity:0;transform:translateY(-10px) scale(.99);}}
 
   .eyebrow{
     display:flex;align-items:center;justify-content:space-between;gap:12px;
@@ -795,7 +797,18 @@
   });
 
   function activate(target){
-    panels.forEach(p=>p.classList.toggle('active', p.id === 'panel-'+target));
+    const nextId = 'panel-'+target;
+    panels.forEach(p=>{
+      const willBeActive = p.id === nextId;
+      if(willBeActive){
+        p.classList.remove('leaving');
+        p.classList.add('active');
+      } else if(p.classList.contains('active')){
+        p.classList.remove('active');
+        p.classList.add('leaving');
+        window.setTimeout(()=> p.classList.remove('leaving'), 240);
+      }
+    });
     sideButtons.forEach(b=>b.classList.toggle('active', b.dataset.target === target));
     mobileBar.querySelectorAll('button').forEach(b=>b.classList.toggle('active', b.dataset.target === target));
     window.scrollTo({top:0,behavior:'instant' in window ? 'instant' : 'auto'});
