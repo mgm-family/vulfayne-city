@@ -27,6 +27,7 @@ files {
 	'html/style.css',
 	'html/script.js',
 	'html/images/*.png',
+	'html/backgrounds/*.jpg',
 }
 
 dependencies {

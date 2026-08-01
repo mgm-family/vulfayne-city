@@ -16,6 +16,7 @@
 - **Seal_S1_I7** (PDヘリコプター記章): `PDヘリコプター記章 -- 上空から街を見守るPDヘリの意匠。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S1_I8** (PD特殊部隊記章): `PD特殊部隊記章 -- 重大事件にのみ出動する特殊部隊の紋章。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S1_I9** (PD創設記念シール): `PD創設記念シール -- Vulfayne市警察創設を記念した限定デザイン。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
+- **Seal_S1_I10** (PD訓練生シール): `PD訓練生シール -- 警察学校で訓練中の訓練生に配られる記章。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 
 ## シート2: EMS（救急隊）記章シール
 
@@ -28,6 +29,7 @@
 - **Seal_S2_I7** (夜間救助記章): `夜間救助記章 -- 深夜の救助活動に従事した証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S2_I8** (現場対応記章): `現場対応記章 -- 犯罪シーンでの人命救助に携わった記章。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S2_I9** (EMS創設記念シール): `EMS創設記念シール -- 救急隊発足を記念した限定デザイン。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
+- **Seal_S2_I10** (EMS研修生シール): `EMS研修生シール -- 救急救命士を目指す研修生に配られる記章。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 
 ## シート3: 白メカニック 記章シール
 
@@ -40,6 +42,7 @@
 - **Seal_S3_I7** (開店祝いシール（メカニック）): `開店祝いシール（メカニック） -- 新規メカニック店舗の開店を祝う限定デザイン。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S3_I8** (歪み対応シール): `歪み対応シール -- 無償対応が許された歪み修理専門の記章。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S3_I9** (白メカニック創設記念シール): `白メカニック創設記念シール -- 直営メカニック創設を記念した限定デザイン。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
+- **Seal_S3_I10** (板金職人シール): `板金職人シール -- 凹んだ車体を元通りに直す板金職人の証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 
 ## シート4: ディーラー 記章シール
 
@@ -52,6 +55,7 @@
 - **Seal_S4_I7** (限定モデル記念シール): `限定モデル記念シール -- 数量限定モデル発表を記念した意匠。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S4_I8** (商談成立シール): `商談成立シール -- 大口商談成立を祝う記章。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S4_I9** (ディーラー創設記念シール): `ディーラー創設記念シール -- 街のディーラー事業発足を記念したデザイン。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
+- **Seal_S4_I10** (バイクディーラーシール): `バイクディーラーシール -- 二輪車を専門に扱うディーラーの証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 
 ## シート5: 飲食店 記章シール
 
@@ -64,6 +68,7 @@
 - **Seal_S5_I7** (季節限定シール): `季節限定シール -- 季節ごとに変わる限定メニューの証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S5_I8** (深夜営業シール（飲食店）): `深夜営業シール（飲食店） -- 夜通し営業する店舗の記章。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S5_I9** (フードショップ創設記念シール): `フードショップ創設記念シール -- 飲食店①創業を記念した限定デザイン。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
+- **Seal_S5_I10** (厨房スタッフシール): `厨房スタッフシール -- 笑顔で腕を振るう厨房スタッフの証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 
 ## シート6: ジョイントショップ 記章シール
 
@@ -76,6 +81,7 @@
 - **Seal_S6_I7** (常連客シール（ジョイント）): `常連客シール（ジョイント） -- 常連客だけに配られる特別な記章。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S6_I8** (開店祝いシール（ジョイント）): `開店祝いシール（ジョイント） -- ジョイントショップ開店を祝う限定デザイン。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S6_I9** (ジョイントショップ創設記念シール): `ジョイントショップ創設記念シール -- ストレス回復店創業を記念したデザイン。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
+- **Seal_S6_I10** (接客スタッフシール（ジョイント）): `接客スタッフシール（ジョイント） -- 客をもてなす接客スタッフの証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 
 ## シート7: 闇医者・闇メカニック 記章シール
 
@@ -88,6 +94,7 @@
 - **Seal_S7_I7** (信頼の証シール): `信頼の証シール -- 裏社会で信頼を得た者に渡される記章。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S7_I8** (深夜対応シール（裏稼業）): `深夜対応シール（裏稼業） -- 深夜のみ稼働する裏稼業の証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S7_I9** (闇稼業創設記念シール): `闇稼業創設記念シール -- 裏社会サービス発足を記念した限定デザイン。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
+- **Seal_S7_I10** (闇の運び屋シール): `闇の運び屋シール -- 裏稼業の品を密かに運ぶ運び屋の証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 
 ## シート8: ギャング 記章シール
 
@@ -100,6 +107,7 @@
 - **Seal_S8_I7** (密輸記章): `密輸記章 -- 密輸ルート開拓の功績を示す証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S8_I8** (潜伏記章): `潜伏記章 -- 潜伏生活を耐え抜いた者の証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S8_I9** (ギャング創設記念シール): `ギャング創設記念シール -- 組織設立を記念した限定デザイン。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
+- **Seal_S8_I10** (見張り役シール): `見張り役シール -- 縄張りを見張る見張り役の証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 
 ## シート9: 月詠一族 記章シール
 
@@ -112,6 +120,7 @@
 - **Seal_S9_I7** (善き守り手記章): `善き守り手記章 -- 表の顔である守り手の証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S9_I8** (理を書き換える記章): `理を書き換える記章 -- 街の理を密かに動かす者の証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S9_I9** (月詠一族創設記念シール): `月詠一族創設記念シール -- 月詠一族の由来を伝える限定デザイン。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
+- **Seal_S9_I10** (月詠の使者シール): `月詠の使者シール -- 一族の意を伝える使者の証。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 
 ## シート10: 街のシンボル 記章シール
 
@@ -124,3 +133,4 @@
 - **Seal_S10_I7** (四英雄シール): `四英雄シール -- 牙琉・叶月・隼士・ムノウをかたどった記章。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S10_I8** (月割れの夜シール): `月割れの夜シール -- 千年前、月が割れた夜を描いた意匠。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
 - **Seal_S10_I9** (Vulfayne City周年記念シール): `Vulfayne City周年記念シール -- 街の周年を祝う、最も希少な記章。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`
+- **Seal_S10_I10** (月詠一族シール): `月詠一族シール -- 表と裏、両方を見守る月詠一族を象徴する意匠。 a small circular vinyl sticker / enamel pin badge design, flat vector illustration, bold clean outlines, glossy finish, centered composition, plain dark background, no text, no watermark, square image`

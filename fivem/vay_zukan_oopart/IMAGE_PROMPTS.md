@@ -16,6 +16,7 @@
 - **Oopart_S1_I7** (大口真神の像): `大口真神の像 -- 一族の始祖を象った小さな石像。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S1_I8** (光の書物): `光の書物 -- 真の光の理を記したとされる古書。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S1_I9** (白狼の遠吠え石): `白狼の遠吠え石 -- 狼の遠吠えが聞こえるという伝説の石。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
+- **Oopart_S1_I10** (白狼の爪): `白狼の爪 -- 白狼の力を宿すという鋭い爪。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 
 ## シート2: 黒影一族の遺物
 
@@ -28,6 +29,7 @@
 - **Oopart_S2_I7** (黒狐の像): `黒狐の像 -- 一族の始祖を象った小さな石像。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S2_I8** (影の書物): `影の書物 -- 影の理を記したとされる古書。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S2_I9** (黒狐の遠吠え石): `黒狐の遠吠え石 -- 狐の鳴き声が聞こえるという伝説の石。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
+- **Oopart_S2_I10** (黒狐の爪): `黒狐の爪 -- 黒狐の力を宿すという鋭い爪。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 
 ## シート3: 月詠一族の秘宝
 
@@ -40,6 +42,7 @@
 - **Oopart_S3_I7** (密約の巻物): `密約の巻物 -- 行政との間に交わされたという密約の巻物。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S3_I8** (月詠の紋章石): `月詠の紋章石 -- 一族の紋章が刻まれた謎の石。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S3_I9** (見えざる目的の手記): `見えざる目的の手記 -- 何のために動いているのか記された断片的な手記。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
+- **Oopart_S3_I10** (月詠の懐剣): `月詠の懐剣 -- 月詠一族が密かに携えていたという懐剣。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 
 ## シート4: 月割れの夜の欠片
 
@@ -52,6 +55,7 @@
 - **Oopart_S4_I7** (月割れの夜の絵巻): `月割れの夜の絵巻 -- その夜の出来事を描いたという絵巻の一部。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S4_I8** (涙の結晶): `涙の結晶 -- 捕らえられた白妙が流したという涙の結晶。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S4_I9** (深手の記憶石): `深手の記憶石 -- 深手を負った朧の記憶を宿すという石。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
+- **Oopart_S4_I10** (割れた月の欠片③): `割れた月の欠片③ -- 三つ目に見つかったという月の欠片。触れると仄かに震える。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 
 ## シート5: 四英雄の遺品
 
@@ -64,6 +68,7 @@
 - **Oopart_S5_I7** (共鳴の記録): `共鳴の記録 -- 光と影が共鳴した瞬間を記録した遺物。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S5_I8** (終戦の証): `終戦の証 -- 千年続いた争いの終結を記念する証。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S5_I9** (見守る影の羽根): `見守る影の羽根 -- 銀の髪の影が落としたという羽根。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
+- **Oopart_S5_I10** (四人の足跡石): `四人の足跡石 -- 四英雄が並んで立ったという場所に残る足跡石。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 
 ## シート6: 禁忌の書と儀具
 
@@ -76,6 +81,7 @@
 - **Oopart_S6_I7** (封印の鈴（欠け）): `封印の鈴（欠け） -- 一部が欠けた封印用の鈴。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S6_I8** (長老会議の記録石): `長老会議の記録石 -- 長老たちの会議内容が刻まれた石板。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S6_I9** (禁忌を破った証): `禁忌を破った証 -- 禁忌が破られた瞬間を示す焦げた遺物。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
+- **Oopart_S6_I10** (禁忌の書 中頁): `禁忌の書 中頁 -- 表紙の中に綴じられていたという禁忌の書の中頁。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 
 ## シート7: 光の遺構
 
@@ -88,6 +94,7 @@
 - **Oopart_S7_I7** (浮遊する結晶): `浮遊する結晶 -- わずかに浮遊するという小さな結晶。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S7_I8** (光の設計図): `光の設計図 -- 解読不能な文字で書かれた設計図。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S7_I9** (光の遺構コア（欠け）): `光の遺構コア（欠け） -- 遺構の中心にあったという壊れたコア。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
+- **Oopart_S7_I10** (光の遺構の鍵): `光の遺構の鍵 -- 遺構の奥深くを開くための鍵とされる遺物。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 
 ## シート8: 影の遺構
 
@@ -100,6 +107,7 @@
 - **Oopart_S8_I7** (浮遊しない結晶): `浮遊しない結晶 -- 重力を無視して沈み込むという結晶。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S8_I8** (影の設計図): `影の設計図 -- 解読不能な文字で書かれた設計図。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S8_I9** (影の遺構コア（欠け）): `影の遺構コア（欠け） -- 遺構の中心にあったという壊れたコア。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
+- **Oopart_S8_I10** (影の遺構の鍵): `影の遺構の鍵 -- 遺構の奥深くを開くための鍵とされる遺物。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 
 ## シート9: 天体観測の遺物
 
@@ -112,6 +120,7 @@
 - **Oopart_S9_I7** (夜空を記録した石版): `夜空を記録した石版 -- ある夜の夜空をそのまま写し取ったという石版。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S9_I8** (流星の欠片): `流星の欠片 -- 月割れの夜に降ったという流星の欠片。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S9_I9** (天体観測日誌): `天体観測日誌 -- 誰かが夜空を見続けた記録の断片。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
+- **Oopart_S9_I10** (北極星の羅針盤): `北極星の羅針盤 -- 常に北極星を指し続けるという不思議な羅針盤。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 
 ## シート10: 双つの月の結晶
 
@@ -124,3 +133,4 @@
 - **Oopart_S10_I7** (四人の誓いの石): `四人の誓いの石 -- 四英雄が手を取り合った場所にあった石。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S10_I8** (静かな終幕の鐘): `静かな終幕の鐘 -- 千年の争いの終わりを告げたという鐘。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
 - **Oopart_S10_I9** (双つの月の結晶（完全体）): `双つの月の結晶（完全体） -- 割れることなく輝く、伝説そのものの結晶。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
+- **Oopart_S10_I10** (月詠一族の記録書): `月詠一族の記録書 -- 月が戻った夜の真実を記したという月詠一族の記録書。 a mysterious ancient relic, painterly fantasy illustration, dramatic rim lighting, faint magical glow, dark moody background, semi-realistic digital painting, no text, no watermark, square image`
