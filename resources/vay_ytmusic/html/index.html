@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>vay_ytmusic</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        overflow: hidden;
+    }
+
+    /* YouTubeプレイヤーは画面外に小さく配置し、見た目には表示させません */
+    .yt-container {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        width: 2px;
+        height: 2px;
+    }
+</style>
+</head>
+<body>
+<div id="players"></div>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="app.js"></script>
+</body>
+</html>
