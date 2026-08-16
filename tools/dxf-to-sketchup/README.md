@@ -103,6 +103,23 @@ RunFromJson.run('C:/path/to/floorplan.json')
 (`floorplan_builder.rb`)を使うため、壁交差部のクリーン化やキッチン等の
 除外・レポートも同様に働く。
 
+### 2階建て以上を1つのモデルに重ねる
+
+`RunFromJson.run` は `z_offset_mm:` を指定でき、同じSketchUpモデル内で
+フロアごとに複数回呼び出すことで、1階の上に2階を正しい高さで積み上げた
+1つの建物モデルを作れる。
+
+```ruby
+RunFromJson.run('1F.json', z_offset_mm: 0)
+RunFromJson.run('2F.json', z_offset_mm: 2700)
+```
+
+★`z_offset_mm`(階高)の目安: 壁高2,400mm(`CONFIG[:wall_height_mm]`)に
+床・天井構造分(200〜400mm程度)を足した値。実際の階高寸法が断面図等で
+分かっている場合はそちらを優先すること。1階と2階でCONFIGの壁高が異なる
+場合は、2階を生成する前に`FloorplanBuilder::CONFIG[:wall_height_mm]`を
+書き換えてから呼び出す。
+
 ### 画像検出特有の調整ポイント・限界(★コード内コメントにも記載済み)
 
 - `kernel_size`(`image_to_floorplan.py` の `detect_wall_mask`, 既定4px):

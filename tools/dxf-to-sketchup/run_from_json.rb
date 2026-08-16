@@ -17,12 +17,20 @@
 #   目視確認すること。ラスター画像からの検出は誤検出・欠落が起こりうるため、
 #   このJSONを直接編集して壁の位置・扉と窓の種別(doors/windows配列の
 #   どちらに入っているか)・家具の要否を補正してから実行するのが前提。
+#
+# 2階建てなど複数階を1つのSketchUpモデルに重ねて生成したい場合は、
+# z_offset_mm に階高(FLからFLまでの高さ, 例: 1階なら0、2階なら2700など
+# 実際の階高に合わせて調整)を指定して、フロアごとに複数回runを呼ぶ:
+#   RunFromJson.run('1F.json', z_offset_mm: 0)
+#   RunFromJson.run('2F.json', z_offset_mm: 2700)
+# ★z_offset_mmの目安(壁高2400mm + 床/天井構造で300mm程度)は建物により
+#   異なるため、実際の断面図・階高寸法があればそちらを優先すること。
 require 'json'
 
 module RunFromJson
   module_function
 
-  def run(json_path)
+  def run(json_path, z_offset_mm: 0)
     unless File.exist?(json_path)
       UI.messagebox("ファイルが見つかりません: #{json_path}")
       return
@@ -34,10 +42,10 @@ module RunFromJson
       return
     end
 
-    walls = (data[:walls] || []).map { |w| normalize_wall(w) }
-    doors = (data[:doors] || []).map { |d| normalize_opening(d) }
-    windows = (data[:windows] || []).map { |w| normalize_opening(w) }
-    furniture = (data[:furniture] || []).map { |f| normalize_furniture(f) }
+    walls = (data[:walls] || []).map { |w| normalize_wall(w, z_offset_mm) }
+    doors = (data[:doors] || []).map { |d| normalize_opening(d, z_offset_mm) }
+    windows = (data[:windows] || []).map { |w| normalize_opening(w, z_offset_mm) }
+    furniture = (data[:furniture] || []).map { |f| normalize_furniture(f, z_offset_mm) }
 
     if walls.empty?
       UI.messagebox('壁データが空です。floorplan.jsonの内容を確認してください。')
@@ -45,7 +53,7 @@ module RunFromJson
     end
 
     model = Sketchup.active_model
-    model.start_operation('Floorplan 3D Generation (from JSON)', true)
+    model.start_operation("Floorplan 3D Generation (from JSON, z=#{z_offset_mm}mm)", true)
 
     walls_solid =
       if FloorplanBuilder::CONFIG[:wall_representation] == :outline
@@ -71,34 +79,34 @@ module RunFromJson
     UI.messagebox(lines.join("\n"))
   end
 
-  def normalize_wall(w)
+  def normalize_wall(w, z_offset_mm)
     {
-      points: (w[:points] || []).map { |p| point_mm(p) },
+      points: (w[:points] || []).map { |p| point_mm(p, z_offset_mm) },
       thickness_mm: w[:thickness_mm],
     }
   end
 
   # 扉・窓は「線分(両端点)」または「単一点+width_mm」のどちらの表現も許容する
   # (floorplan_builder.rb の cut_openings が両方のケースを処理する)
-  def normalize_opening(o)
+  def normalize_opening(o, z_offset_mm)
     if o[:points]
-      { points: o[:points].map { |p| point_mm(p) } }
+      { points: o[:points].map { |p| point_mm(p, z_offset_mm) } }
     else
-      pt = point_mm(o[:point])
+      pt = point_mm(o[:point], z_offset_mm)
       { points: [pt], width_mm: o[:width_mm] }
     end
   end
 
-  def normalize_furniture(f)
+  def normalize_furniture(f, z_offset_mm)
     {
-      points: (f[:points] || []).map { |p| point_mm(p) },
+      points: (f[:points] || []).map { |p| point_mm(p, z_offset_mm) },
       closed: true,
       label: f[:label].to_s,
     }
   end
 
-  def point_mm(p)
+  def point_mm(p, z_offset_mm)
     x, y = p
-    Geom::Point3d.new(x.to_f.mm, y.to_f.mm, 0)
+    Geom::Point3d.new(x.to_f.mm, y.to_f.mm, z_offset_mm.to_f.mm)
   end
 end
