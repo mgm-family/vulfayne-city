@@ -1,7 +1,8 @@
-# DXF間取り図 → SketchUp 3Dモデル生成ツール
+# 間取り図 → SketchUp 3Dモデル生成ツール
 
-DXF形式の間取り図(レイヤー構成: `Walls` / `Doors` / `Windows` / `Furniture`)から、
-SketchUpで読み込み可能な3Dモデルを自動生成するためのRubyスクリプト一式。
+DXF形式の間取り図(レイヤー構成: `Walls` / `Doors` / `Windows` / `Furniture`)、
+または写真・PNG/JPGなどラスター画像の間取り図から、SketchUpで読み込み可能な
+3Dモデルを自動生成するためのスクリプト一式。
 
 > **注記**: 今回の依頼メッセージには「添付DXFファイル」への言及がありましたが、
 > このセッションの作業環境にDXFファイルは見当たりませんでした。そのため、特定の
@@ -17,9 +18,13 @@ SketchUpで読み込み可能な3Dモデルを自動生成するためのRubyス
 | `floorplan_builder.rb` | 壁の立ち上げ・建具開口カット・家具押し出しのコアロジック(SketchUp API使用、入力元非依存) |
 | `run_from_dxf.rb` | DXFファイルを直接パースして3Dモデルを生成するエントリーポイント |
 | `run_from_native_import.rb` | SketchUp純正のDXFインポート結果を後処理して3Dモデルを生成するエントリーポイント |
+| `image_to_floorplan.py` | 写真/PNG/JPG等の間取り図から壁・扉・窓・家具を検出し、共通JSON(`floorplan.json`)に変換するPythonスクリプト(SketchUp外、事前処理用) |
+| `run_from_json.rb` | `floorplan.json`(画像由来、またはDXF由来を変換したもの)を読み込んで3Dモデルを生成するエントリーポイント |
 
-2種類のエントリーポイントを用意しているのは、DXFの複雑さ(円弧・スプラインの有無など)
-によって適切な経路が変わるため。
+DXF入力には2種類、画像入力には1種類のエントリーポイントを用意している。
+DXFの場合は複雑さ(円弧・スプラインの有無など)によって適切な経路が変わり、
+画像の場合はレイヤー情報がないため一度Python側でベクトル化(JSON化)してから
+SketchUp側で3D化する2段階構成になっている。
 
 ## どちらの経路を使うか
 
@@ -36,7 +41,90 @@ SketchUpで読み込み可能な3Dモデルを自動生成するためのRubyス
 SketchUpのSolid Tools (`union`) で結合することで、T字・十字交差部の内部に
 余分な面が残らない単一ソリッドを生成する。
 
-## 実行方法
+## 写真・PNG等の画像から生成する場合
+
+DXFと違い、ラスター画像にはレイヤーという概念がないため「壁・扉・窓・家具を
+区別する情報」がそもそも存在しない。`image_to_floorplan.py` は画像処理
+(線の太さ・長さ・隙間・輪郭形状)から**推定**でこれを補うツールで、DXF経路と
+違って100%の精度は前提にしていない。CADから書き出したクリーンな線画PNGでは
+実用的な精度が出るが、手書きやスマホ写真(照明ムラ・斜め撮影・歪み)は
+誤検出が増える。**必ず検出結果を目視確認・補正してから3D化すること。**
+
+### 1. 実寸スケールを用意する
+
+画像だけでは何pxが何mmかは分からないため、以下のいずれかを必ず指定する。
+
+- 図面上の既知の2点(例: 寸法線の両端)のpx座標と実寸(mm)を指定する
+  (`--reference-px x1,y1,x2,y2 --reference-mm <実寸mm>`)
+- 1pxあたりのmmが分かっている場合は直接指定する(`--mm-per-px <値>`)
+
+### 2. ベクトル化(Python)
+
+```bash
+pip install opencv-python numpy
+
+python3 image_to_floorplan.py plan.png \
+    --reference-px 120,80,120,640 --reference-mm 3640 \
+    --out floorplan.json
+
+# 照明ムラの多いスマホ写真の場合
+python3 image_to_floorplan.py plan_photo.jpg \
+    --reference-px 120,80,120,640 --reference-mm 3640 \
+    --photo-mode --out floorplan.json
+```
+
+実行すると `floorplan.json`(共通データ, 単位mm)と
+`floorplan_debug.png`(検出結果を壁=赤・扉=緑丸・窓=青丸・家具=黄/黒の
+輪郭で重ね描きした確認用画像)が出力される。**SketchUpで3D化する前に
+`floorplan_debug.png` を必ず開いて確認すること。** ずれている壁、
+door/windowの取り違え、不要な家具の誤検出などがあれば `floorplan.json`
+をテキストエディタで直接編集して補正する(JSON構造は下記参照)。
+
+```json
+{
+  "unit": "mm",
+  "walls": [ { "points": [[x1,y1], [x2,y2]], "thickness_mm": 150 } ],
+  "doors": [ { "point": [x, y], "width_mm": 800 } ],
+  "windows": [ { "point": [x, y], "width_mm": 1200 } ],
+  "furniture": [ { "points": [[x,y], ...], "label": "unknown" } ]
+}
+```
+
+### 3. 3Dモデル生成(SketchUp)
+
+```ruby
+dir = 'C:/path/to/tools/dxf-to-sketchup'
+load File.join(dir, 'floorplan_builder.rb')
+load File.join(dir, 'run_from_json.rb')
+RunFromJson.run('C:/path/to/floorplan.json')
+```
+
+壁のunion・開口カット・家具の押し出しはDXF経路と完全に同じロジック
+(`floorplan_builder.rb`)を使うため、壁交差部のクリーン化やキッチン等の
+除外・レポートも同様に働く。
+
+### 画像検出特有の調整ポイント・限界(★コード内コメントにも記載済み)
+
+- `kernel_size`(`image_to_floorplan.py` の `detect_wall_mask`, 既定4px):
+  壁線とそれ以外の細線(家具・寸法線)を線の太さで区別するための
+  モルフォロジー処理のカーネルサイズ。画像解像度・線の太さに応じて
+  調整が必須(大きすぎると壁ごと消え、小さすぎると細線を壁と誤検出する)。
+- `--max-bridge-gap-px`(既定200px): 同一直線上の壁の断片を1本に結合する際に
+  許容する隙間の上限。扉・窓の開口幅より少し大きい値にする。
+- 扉/窓の判定(`classify_opening`)は開口付近に円弧(ドアの開き勝手線)らしい
+  輪郭があるかどうかのヒューリスティックで、**誤判定しうる**。生成された
+  `floorplan.json` の `doors`/`windows` 配列は必ず目視で見直すこと。
+- 家具は輪郭形状から検出するのみで、種類(ソファ/ベッド等)は判別できない。
+  `label` は `"unknown"`(単純形状)または `"unknown_complex"`(頂点数が多く
+  複雑な形状 = キッチン等の可能性)になる。DXF経路のような
+  キーワードベースの高さ推定・自動除外は働かないため、`"unknown_complex"`
+  の項目やドアの開き勝手線がノイズとして家具に混入していないかを
+  `floorplan_debug.png` で確認し、不要なら `floorplan.json` から
+  該当エントリを削除するか、`label` を手動で書き換えて
+  `furniture_height_overrides_mm` のキーワードに一致させること。
+- `ARC`/曲線で構成された壁(円弧壁)は非対応。直線壁の間取り図を前提とする。
+
+## 実行方法(DXF)
 
 SketchUpの `ウィンドウ > Ruby コンソール` を開き、以下を入力(パスは環境に合わせて変更):
 
@@ -119,3 +207,7 @@ RunFromNativeImport.run
   ジオメトリの状態によって失敗することがある。失敗時は警告をコンソールに
   出力し、該当ソリッドを未結合のまま残すので、SketchUp付属の
   「ソリッドインスペクター」拡張機能で手動確認・修復することを推奨する。
+- `image_to_floorplan.py` はサンプル画像での検証時、扉の開き勝手線(円弧)
+  そのものが小さな「家具」として誤検出されることがあった。
+  `floorplan_debug.png` で黒枠の `unknown_complex` 項目が扉付近にある場合は
+  ノイズの可能性が高いため、`floorplan.json` から該当エントリを削除すること。
