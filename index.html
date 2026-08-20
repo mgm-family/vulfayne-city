@@ -540,6 +540,7 @@
       <button data-target="civil"><span class="dot"></span>公務員</button>
       <button data-target="civilian"><span class="dot"></span>民間</button>
       <button data-target="crime"><span class="dot"></span>犯罪</button>
+      <button data-target="wanted"><span class="dot"></span>指名手配</button>
     </nav>
     <div class="sidebar-foot">
       <p>VAY city / Vulfayne City<br>Roleplay Server Codex</p>
@@ -761,6 +762,15 @@
       <p class="panel-sub">犯罪者 ／ 闇医者 ／ 闇メカニック ／ ギャング ／ 犯罪ルール ／ 押収品</p>
 
       <div id="crime-content"></div>
+    </section>
+
+    <!-- ============ WANTED ============ -->
+    <section class="panel" id="panel-wanted">
+      <div class="eyebrow"><span class="label">WANTED</span><div class="logo-tag logo-mark" role="img" aria-label="Vulfayne City logo"></div></div>
+      <h2 class="panel-title">指名手配</h2>
+      <p class="panel-sub">街に指名手配されている人物の一覧 ― 容疑・懸賞金・特徴</p>
+
+      <div id="wanted-content"></div>
 
       <footer class="site-foot">
         Vulfayne City ― Invitation-only Roleplay City ／ 本ページはVAY city運営資料をもとに構成されています。内容は街の発展に応じて更新される場合があります。
@@ -780,7 +790,8 @@
     {id:'compensation', label:'補填'},
     {id:'civil', label:'公務員'},
     {id:'civilian', label:'民間'},
-    {id:'crime', label:'犯罪'}
+    {id:'crime', label:'犯罪'},
+    {id:'wanted', label:'指名手配'}
   ];
 
   const sideButtons = document.querySelectorAll('#tabNav button');
@@ -828,7 +839,7 @@
      ---------------------------------------------------------
      data/*.json を編集して push すれば、そのままサイトに反映されます。
      flat形式（rules/entry/compensation）: { blocks: [{num,title,html}, ...] }
-     accordion形式（civil/civilian/crime）: { accent, groups: [{tag,title,open,html}, ...] }
+     accordion形式（civil/civilian/crime/wanted）: { accent, groups: [{tag,title,open,html}, ...] }
   ========================================================= */
   const CONTENT_TARGETS = [
     { id: 'rules', mode: 'flat' },
@@ -836,7 +847,8 @@
     { id: 'compensation', mode: 'flat' },
     { id: 'civil', mode: 'accordion' },
     { id: 'civilian', mode: 'accordion' },
-    { id: 'crime', mode: 'accordion' }
+    { id: 'crime', mode: 'accordion' },
+    { id: 'wanted', mode: 'accordion' }
   ];
 
   async function loadContent(target){
